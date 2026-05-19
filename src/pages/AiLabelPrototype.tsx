@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useState } from "react";
+﻿import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import {
   AlertCircle,
   ArrowLeft,
@@ -1865,7 +1865,7 @@ const LabelHQScreen = ({
         <div className="space-y-5">
            <div className="flex items-center justify-between border-b border-foreground/5 pb-4">
               <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Active Missions</p>
-              <button onClick={() => onWorkspace("missionsWorkspace")} className="text-[11px] font-bold text-brand-accent hover:underline">See all missions â†’</button>
+              <button onClick={() => onWorkspace("missionsWorkspace")} className="text-[11px] font-bold text-brand-accent hover:underline">See all missions Ã¢â€ â€™</button>
            </div>
            <LightMissionCards missions={missions.filter(m => m.status !== "complete")} onMission={onMission} onWorkspace={onWorkspace} />
         </div>
@@ -2108,7 +2108,7 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
         </div>
         <div>
           <p className="font-ui text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Today's Brief</p>
-          <p className="text-[13px] font-bold text-foreground opacity-90">{profile.name} Â· {profile.release}</p>
+          <p className="text-[13px] font-bold text-foreground opacity-90">{profile.name} - Artist operating read</p>
         </div>
       </div>
       <button
@@ -2122,15 +2122,15 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
     {/* Brief Body */}
       <div className="px-4 py-5 lg:px-7 lg:py-7">
       <h2 className="font-display max-w-2xl text-[1.35rem] font-bold leading-tight tracking-tight text-foreground lg:text-2xl">
-        Momentum is durably building. Commitment is pending review.
+        Sable Day is building real breakout pressure, but the next move is still about proof.
       </h2>
       
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         <div className="space-y-2.5">
-           <p className="font-ui text-[11px] font-bold uppercase tracking-[0.1em] text-success">Proof</p>
+           <p className="font-ui text-[11px] font-bold uppercase tracking-[0.1em] text-success">Signal Proof</p>
            <div className="rounded-2xl border border-foreground/5 bg-foreground/[0.01] p-4 lg:p-5">
               <p className="text-[15px] font-medium leading-relaxed text-foreground/80">
-                128.4k tracked streams. TikTok hook uses are 4.8x above baseline. Regional growth in Chicago (+31%) and Lagos confirmed.
+                128.4k tracked streams across connected sources. TikTok hook clips are running 4.8x above baseline. Chicago is up 31% week over week, and Lagos comments are repeating the Night Bus lyric.
               </p>
            </div>
         </div>
@@ -2138,7 +2138,7 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
            <p className="font-ui text-[11px] font-bold uppercase tracking-[0.1em] text-brand-accent">Manager Read</p>
            <div className="rounded-2xl border border-brand-accent/10 bg-brand-accent/[0.02] p-4 lg:p-5">
               <p className="text-[15px] font-medium leading-relaxed text-foreground/80">
-                Signed split sheet, distributor confirmation, creator commitments, and press/EPK package are currently missing. Rights gate review is active.
+                The artist is no longer sitting on local attention only. The sound, story, and audience response are starting to travel, but the label should not treat this as scale-ready until private saves, source-of-stream, split approval, distributor confirmation, and campaign proof are cleaner.
               </p>
            </div>
         </div>
@@ -2146,10 +2146,10 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
 
       <div className="mt-5 max-w-3xl space-y-3 border-t border-foreground/5 pt-5 text-[15px] font-medium leading-relaxed text-muted-foreground/80 lg:mt-6 lg:space-y-4 lg:pt-6 lg:text-[16px]">
         <p>
-          The current release plan is stronger because the Manager refused the rushed next-Friday drop and moved Night Bus to Friday, June 12, 2026.
+          Night Bus is the strongest current signal because it is connecting story, sound, and audience reaction. The opportunity is real, but the Manager should protect the artist from turning early movement into rushed spend or public commitments.
         </p>
         <p>
-          The Manager's Read: the release can become credible if rights, distribution, playlist pitching, creator seeding, press, owned content, and release-day checks stay connected in one mission loop.
+          Today's read is artist-level: Sable can move from Atlanta momentum into wider proof if the team keeps the best release work moving while tightening rights, delivery, private data, and campaign evidence.
         </p>
       </div>
 
@@ -2158,7 +2158,7 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
         <p className="font-ui text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent">Today's Directive</p>
         <p className="mt-1 font-ui text-[10px] font-bold uppercase tracking-[0.13em] text-muted-foreground/85">Next Move</p>
         <p className="mt-3 text-[15px] font-bold leading-relaxed text-foreground opacity-90">
-          Clear split approval first. Keep June 12 conditional until rights are written, then move distributor delivery, DSP pitching, creator seeding, press, and launch content in sequence.
+          Protect the momentum. Keep release work moving, clear rights and delivery gaps, and wait for cleaner private signal before increasing spend, pressure, or public commitments.
         </p>
       </div>
 
@@ -2167,7 +2167,7 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
           onClick={onEvidence}
           className="text-[12px] font-bold text-muted-foreground/85 underline-offset-4 hover:text-brand-accent hover:underline transition-all"
         >
-          View supporting evidence â†’
+          View supporting evidence
         </button>
         <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50 italic">Generated by AI Manager 08:30 AM</span>
       </div>
@@ -2199,7 +2199,7 @@ const LightAttentionSummary = ({ onDrawer, onWorkspace }: { onDrawer: (drawer: D
              <p className="text-[13px] font-bold text-foreground tracking-tight">Distributor package</p>
           </div>
           <p className="text-[12px] font-medium text-muted-foreground/80 leading-relaxed">
-             Adding a Spotify for Artists export would increase signal confidence for the Nigeria sprint.
+             Distributor confirmation is still needed before the June 12 delivery path can be treated as clean.
           </p>
         </button>
       </div>
@@ -2215,7 +2215,7 @@ const LightAttentionSummary = ({ onDrawer, onWorkspace }: { onDrawer: (drawer: D
         ].map((item, i) => (
           <div key={i} className="relative flex flex-col gap-2 pl-6 before:absolute before:left-0 before:top-1 before:h-2 before:w-2 before:rounded-full before:bg-foreground/5">
             <p className="text-[12px] font-bold text-foreground leading-tight tracking-tight">{item.title}</p>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/88">{item.label} Â· {item.time}</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/88">{item.label} Ã‚Â· {item.time}</p>
           </div>
         ))}
       </div>
@@ -2541,7 +2541,7 @@ const ManagerDeskPanel = ({
           </div>
         </aside>
 
-        {/* Right: Active question â€” fills the screen */}
+        {/* Right: Active question Ã¢â‚¬â€ fills the screen */}
         <div className="rounded-[28px] border border-foreground/5 bg-background p-8 shadow-2xl shadow-black/[0.02]">
           <div className="max-w-2xl">
             <p className="font-ui text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent">Active Question {managerQuestions.findIndex(q => q.id === activeQuestion) + 1} / {managerQuestions.length}</p>
@@ -2574,7 +2574,7 @@ const ManagerDeskPanel = ({
       </div>
       </div>
     ) : (
-      /* UNLOCKED STATE: All questions answered â€” show full interface */
+      /* UNLOCKED STATE: All questions answered Ã¢â‚¬â€ show full interface */
       <>
         {/* Ask the Manager */}
         <div className="surface-panel rounded-[28px] p-8 shadow-2xl shadow-black/[0.02]">
@@ -2629,7 +2629,7 @@ const ManagerDeskPanel = ({
           </div>
         </div>
 
-        {/* Recent Conversations â€” only visible after unlock */}
+        {/* Recent Conversations Ã¢â‚¬â€ only visible after unlock */}
         <RecentConversationsPanel conversations={conversations} onContinueConversation={onContinueConversation} />
       </>
     )}
@@ -3206,7 +3206,7 @@ const CheckpointsWorkspace = ({ onBack, testCheckpoint }: { onBack: () => void; 
               <p className="min-w-0 truncate text-[13px] font-bold text-foreground">{selectedCheckpoint.title}</p>
               <span className={cn("shrink-0 rounded-full border px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em]", statusClass(selectedCheckpoint))}>{selectedCheckpoint.status}</span>
             </div>
-            <p className="mt-2 text-[12px] font-semibold leading-relaxed text-foreground/89">{selectedCheckpoint.managerRecommendation}</p>
+            <p className="mt-2 text-[12px] font-semibold leading-relaxed text-foreground/89">{selectedCheckpoint.recommendation}</p>
             <p className="mt-2 text-[12px] font-bold leading-relaxed text-brand-accent">{selectedCheckpoint.nextAction}</p>
           </div>
         </section>
@@ -3455,7 +3455,7 @@ const MissionsWorkspace = ({
                       </p>
                       <div className="flex items-center gap-2">
                          <span className={cn("h-1 w-1 rounded-full", statusColor)} />
-                         <p className="text-[10px] font-bold uppercase tracking-wider opacity-40">{mission.progress}% Â· {mission.review}</p>
+                         <p className="text-[10px] font-bold uppercase tracking-wider opacity-40">{mission.progress}% Ã‚Â· {mission.review}</p>
                       </div>
                     </button>
                   );
@@ -3829,7 +3829,7 @@ const EvidenceDrawer = ({ drawer, onClose }: { drawer: DrawerKind; onClose: () =
               <div key={item.id} className="surface-panel overflow-hidden rounded-[28px] p-8 shadow-2xl shadow-black/[0.03] transition-all hover:scale-[1.01]">
                 <div className="flex flex-wrap items-start justify-between gap-6">
                   <div>
-                    <p className="font-ui text-[11px] font-bold uppercase tracking-[0.15em] text-brand-accent">{item.id} Â· {item.source}</p>
+                    <p className="font-ui text-[11px] font-bold uppercase tracking-[0.15em] text-brand-accent">{item.id} Ã‚Â· {item.source}</p>
                     <h4 className="font-display mt-2 text-[22px] font-bold text-foreground tracking-tight">{item.subject}.</h4>
                   </div>
                   <span className={cn(
@@ -3964,7 +3964,7 @@ const EvidenceDrawer = ({ drawer, onClose }: { drawer: DrawerKind; onClose: () =
 const InvestigationScreen = ({ onBack }: { onBack: () => void }) => (
   <WorkspaceShell eyebrow="Intelligence" title="Investigation" onBack={onBack}>
     <div className="surface-panel rounded-[24px] p-8">
-      <p className="text-[15px] font-medium text-muted-foreground/80 leading-relaxed">Investigation workspace â€” cross-referencing signals and market data.</p>
+      <p className="text-[15px] font-medium text-muted-foreground/80 leading-relaxed">Investigation workspace Ã¢â‚¬â€ cross-referencing signals and market data.</p>
     </div>
   </WorkspaceShell>
 );

@@ -1815,49 +1815,12 @@ Backend implementation must preserve the current prototype object boundaries:
 
 The backend should not introduce a different navigation model or split these work products into unrelated dashboards. It should support the prototype's operating-room flow: setup -> Label HQ -> Manager Office / conversations -> Manager run -> decision package -> mission workspaces and contextual drawers.
 
-Suggested core tables:
+Authoritative V1 schema:
 
-- users
-- artists
-- artist_aliases
-- artist_operating_profiles
-- artist_sources
-- source_connections
-- source_capabilities
-- raw_source_snapshots
-- normalized_entities
-- evidence_items
-- evidence_metrics
-- social_signal_subjects
-- manager_playbooks
-- manager_threads
-- manager_messages
-- manager_runs
-- manager_run_steps
-- manager_evidence_used
-- manager_missions
-- manager_tasks
-- manager_task_results
-- mission_checkpoints
-- mission_checkpoint_results
-- mission_events
-- mission_reviews
-- mission_memory_summaries
-- agent_notes
-- artist_checkins
-- artist_operating_memory
-- decision_records
-- work_drafts
-- agent_referrals
-- specialist_memos
-- audit_events
-- source_token_metadata
-- data_deletion_requests
-- admin_audit_events
-- quality_gate_results
-- monitoring_rules
-- monitoring_runs
-- notification_events
+- The database contract lives in `docs/workflows/future-schema-notes.md`.
+- That file is no longer a speculative future sketch; it is the V1 operational database schema contract.
+- Backend implementation should derive migrations from that schema contract instead of maintaining a second table list in this PRD.
+- The contract covers ownership/workspaces, artist profile, generic artist work objects, source ingestion, evidence, agents, Manager runs, Label HQ, conversations, decision packages, dynamic missions, tasks, checkpoints, reviews, permissions, drafts, memory, learning, and rebuildable UI projections.
 
 Minimum security fields on sensitive records:
 
@@ -1930,7 +1893,7 @@ Example request:
   "thread_id": "thread_456",
   "user_question": "We have $5,000. What should we do this month?",
   "context": {
-    "active_release_id": "release_789",
+    "active_focus_object_id": "object_789",
     "budget": 5000
   }
 }

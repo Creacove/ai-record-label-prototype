@@ -91,13 +91,13 @@ describe("AiLabelPrototype Label HQ operating room", () => {
     ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     fireEvent.click(screen.getAllByText(/^tasks$/i)[0].closest("button")!);
     expect(screen.getByTestId("mobile-task-stepper")).toBeInTheDocument();
-    expect(screen.getByTestId("mobile-task-stepper")).toHaveTextContent(/release strategy/i);
-    expect(screen.getAllByText(/checkpoint link/i).length).toBeGreaterThan(0);
+    expect(screen.getByTestId("mobile-task-stepper")).toHaveTextContent(/release foundation/i);
+    expect(screen.getByTestId("task-group-cp-1-foundation")).toHaveTextContent(/phase 1/i);
+    expect(screen.getByTestId("task-group-cp-1-foundation")).toHaveTextContent(/is the release safe/i);
 
     fireEvent.click(screen.getByRole("button", { name: /back/i }));
     fireEvent.click(screen.getAllByText(/^checkpoints$/i)[0].closest("button")!);
     expect(screen.getByTestId("mobile-checkpoint-list")).toBeInTheDocument();
-    expect(screen.getByTestId("mobile-selected-checkpoint-detail")).toHaveTextContent(/manager recommendation/i);
     expect(screen.getByTestId("checkpoint-inspector")).toHaveTextContent(/manager recommendation/i);
   }, 15000);
 
@@ -132,8 +132,9 @@ describe("AiLabelPrototype Label HQ operating room", () => {
     expect(screen.queryByText(/artist profile/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/operating dashboard/i)).not.toBeInTheDocument();
     expect(screen.getByText(/today's brief/i)).toBeInTheDocument();
-    expect(screen.getByText(/momentum is durably building/i)).toBeInTheDocument();
-    expect(screen.getByText(/The current release plan is stronger because the Manager refused/i)).toBeInTheDocument();
+    expect(screen.getByText(/Sable Day is building real breakout pressure/i)).toBeInTheDocument();
+    expect(screen.getByText(/128\.4k tracked streams across connected sources/i)).toBeInTheDocument();
+    expect(screen.getByText(/Night Bus is the strongest current signal/i)).toBeInTheDocument();
     expect(screen.getByText(/today's directive/i)).toBeInTheDocument();
     expect(screen.getByText(/focus/i)).toBeInTheDocument();
     expect(screen.getAllByText(/active missions/i).length).toBeGreaterThan(0);
@@ -146,7 +147,7 @@ describe("AiLabelPrototype Label HQ operating room", () => {
 
     fireEvent.click(screen.getByText(/view supporting evidence/i).closest("button")!);
     expect(screen.getByText(/evidence file/i)).toBeInTheDocument();
-    expect(screen.getByText(/Private saves/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Private saves/i).length).toBeGreaterThan(0);
     fireEvent.click(screen.getByRole("button", { name: /close/i }));
 
     fireEvent.click(screen.getByText(/talk to manager/i).closest("button")!);
@@ -256,8 +257,8 @@ describe("AiLabelPrototype Label HQ operating room", () => {
     expect(screen.queryByText(/^Linked mission$/i)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /back/i }));
-    fireEvent.click(screen.getAllByText(/^memory$/i)[0].closest("button")!);
-    expect(screen.getAllByText(/Mission memory/i).length).toBeGreaterThan(0);
+    fireEvent.click(screen.getAllByText(/^mission recap$/i)[0].closest("button")!);
+    expect(screen.getAllByText(/Mission recap/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/living recap of the mission/i)).toBeInTheDocument();
     expect(screen.getByText(/original request/i)).toBeInTheDocument();
     expect(screen.getAllByText(/I want to drop a new song next week/i).length).toBeGreaterThan(0);
@@ -297,7 +298,7 @@ describe("AiLabelPrototype Label HQ operating room", () => {
     expect(screen.getByText(/Release Night Bus on June 12/i)).toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /open created mission/i }));
-    expect(screen.getByText(/Mission overview/i)).toBeInTheDocument();
+    expect(screen.getByText(/What is happening/i)).toBeInTheDocument();
     expect(screen.getByText(/Manager check-in/i)).toBeInTheDocument();
   }, 10000);
 
@@ -306,55 +307,51 @@ describe("AiLabelPrototype Label HQ operating room", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /release night bus on june 12/i }));
 
-    expect(screen.getByText(/Mission overview/i)).toBeInTheDocument();
+    expect(screen.getByText(/What is happening/i)).toBeInTheDocument();
     expect(screen.getByTestId("mission-command-bar")).toBeInTheDocument();
     expect(screen.getByTestId("mission-surface-rail")).toBeInTheDocument();
     expect(screen.getAllByText(/Needs attention/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Rights & Metadata Gate/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Manager call/i)).toBeInTheDocument();
     expect(screen.getByText(/manager check-in/i)).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /resume mission/i })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /^archive$/i })).not.toBeInTheDocument();
-    expect(screen.getByText(/manager recommendation/i)).toBeInTheDocument();
+    expect(screen.getByText(/^recommendation$/i)).toBeInTheDocument();
     expect(screen.getByText(/Move the release to Friday, June 12, 2026/i)).toBeInTheDocument();
     expect(screen.getByText(/what changed/i)).toBeInTheDocument();
     expect(screen.getByText(/preserved the Spotify pitch window/i)).toBeInTheDocument();
     expect(screen.queryByText(/what you need to do next/i)).not.toBeInTheDocument();
-    expect(screen.getByText(/next task created/i)).toBeInTheDocument();
+    expect(screen.getByText(/^next task$/i)).toBeInTheDocument();
     expect(screen.getAllByText(/^tasks$/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/^checkpoints$/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/^notes$/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/^memory$/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/^mission recap$/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/Mission Profile/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/full log/i)).not.toBeInTheDocument();
 
     fireEvent.click(screen.getAllByText(/^tasks$/i)[0].closest("button")!);
     expect(screen.getByText(/Release tasks/i)).toBeInTheDocument();
-    expect(screen.getByText(/Checkpoint path/i)).toBeInTheDocument();
-    expect(screen.getByTestId("task-checkpoint-chain-release-strategy")).toHaveAttribute("aria-current", "true");
-    expect(screen.getByTestId("task-checkpoint-section-release-strategy")).toHaveAttribute("data-active", "true");
-    expect(screen.getAllByText(/Clears when/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/needed to clear/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Rights & Metadata Gate/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/DSP & Playlist Gate/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Creator Seeding Gate/i).length).toBeGreaterThan(0);
+    expect(screen.getByTestId("task-group-tab-cp-1-foundation")).toHaveAttribute("aria-current", "true");
+    expect(screen.getByTestId("task-group-cp-1-foundation")).toHaveAttribute("data-active", "true");
+    expect(screen.getAllByText(/Release Foundation/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Campaign Build/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Outreach & Activation/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Confirm split sheet/i)).toBeInTheDocument();
     expect(screen.getByText(/Submit Spotify for Artists pitch/i)).toBeInTheDocument();
     expect(screen.getByText(/Build TikTok creator target list/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/Unlocks checkpoint/i).length).toBeGreaterThan(0);
+    fireEvent.click(screen.getAllByRole("button", { name: /show details/i })[0]);
     expect(screen.getAllByText(/Risk if late/i).length).toBeGreaterThan(0);
-    expect(screen.getAllByText(/Checkpoint link/i).length).toBeGreaterThan(0);
-    fireEvent.click(screen.getByTestId("task-checkpoint-chain-dsp-playlist"));
-    expect(screen.getByTestId("task-checkpoint-chain-dsp-playlist")).toHaveAttribute("aria-current", "true");
-    expect(screen.getByTestId("task-checkpoint-section-dsp-playlist")).toHaveAttribute("data-active", "true");
+    fireEvent.click(screen.getByTestId("task-group-tab-cp-2-campaign"));
+    expect(screen.getByTestId("task-group-tab-cp-2-campaign")).toHaveAttribute("aria-current", "true");
+    expect(screen.getByTestId("task-group-cp-2-campaign")).toHaveAttribute("data-active", "true");
     expect(screen.queryByText(/track saves, clicks, follows/i)).not.toBeInTheDocument();
-    fireEvent.click(screen.getAllByRole("button", { name: /mark done/i })[3]);
+    fireEvent.click(screen.getByRole("button", { name: /show details submit spotify for artists pitch/i }));
 
-    expect(screen.getAllByText(/Manager review/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Manager note/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Pitch submitted Monday with story, genre, mood, marketing plan/i)).toBeInTheDocument();
     expect(screen.getByText(/DSP gate improved/i)).toBeInTheDocument();
     expect(screen.getByText(/Prepare independent curator outreach using the same positioning/i)).toBeInTheDocument();
     expect(screen.getByText(/Confirm split sheet/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /show details confirm split sheet/i }));
     expect(screen.getByText(/Rights gate failed/i)).toBeInTheDocument();
     expect(screen.getByText(/Create urgent split approval task/i)).toBeInTheDocument();
 
@@ -363,25 +360,19 @@ describe("AiLabelPrototype Label HQ operating room", () => {
 
     expect(screen.getByText(/mission checkpoints/i)).toBeInTheDocument();
     expect(screen.getByText(/Mission progress map/i)).toBeInTheDocument();
-    expect(screen.getByText(/Reusable checkpoint model/i)).toBeInTheDocument();
     expect(screen.getByTestId("checkpoint-command-strip")).toBeInTheDocument();
-    expect(screen.getByTestId("checkpoint-scroll-region")).toHaveClass("lg:max-h-[calc(100vh-245px)]");
     expect(screen.getByTestId("checkpoint-inspector")).toHaveClass("lg:sticky");
-    expect(screen.getAllByText(/Checkpoint path/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Now viewing/i)).toBeInTheDocument();
-    expect(screen.getByText(/progress map/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Required task results/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Release is not safe to ship until split approval is written/i)).toBeInTheDocument();
-    expect(screen.getByText(/Proceed only after split approval/i)).toBeInTheDocument();
-    expect(screen.getByText(/Move date/i)).toBeInTheDocument();
+    expect(screen.getByText(/The foundation review found a real hold/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Get the producer split sheet signed and uploaded/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Needs fix/i)).toBeInTheDocument();
     expect(screen.queryByText(/You do not need to track this manually/i)).not.toBeInTheDocument();
     expect(screen.queryByText(/AI-owned release readiness reviews/i)).not.toBeInTheDocument();
     expect(screen.queryByTestId("checkpoint-summary-rail")).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByRole("button", { name: /DSP & Playlist Gate/i }));
-    expect(screen.getByTestId("checkpoint-ledger-dsp-playlist")).toHaveAttribute("aria-current", "true");
-    expect(screen.getByText(/Continue to independent curator outreach/i)).toBeInTheDocument();
-    expect(screen.getByText(/Spotify pitch task strengthens the mission/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: /Campaign Build/i }));
+    expect(screen.getByText(/Campaign Build remains conditional/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/Complete the creator list, EPK, and content approval/i).length).toBeGreaterThan(0);
     expect(screen.queryByText(/budget task state/i)).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /approve cap/i })).not.toBeInTheDocument();
   }, 15000);
