@@ -1752,7 +1752,7 @@ const BrandMark = ({ size = "md" }: { size?: "sm" | "md" }) => (
   <span
     aria-hidden="true"
     className={cn(
-      "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[12px] border border-foreground/10 bg-[#111] shadow-[0_4px_12px_rgba(0,0,0,0.1)]",
+      "relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-[10px] border border-foreground/10 bg-[#111]",
       size === "sm" ? "h-8 w-8" : "h-10 w-10",
     )}
   >
@@ -1763,8 +1763,8 @@ const BrandMark = ({ size = "md" }: { size?: "sm" | "md" }) => (
 const Badge = ({ children, active = false }: { children: React.ReactNode; active?: boolean }) => (
   <span
     className={cn(
-      "inline-flex items-center gap-1 rounded-full border px-3 py-1 font-ui text-[10px] font-bold uppercase tracking-[0.12em] transition-colors duration-200",
-      active ? "border-brand-accent/20 bg-brand-ghost text-brand-accent" : "border-foreground/10 bg-background/70 text-muted-foreground",
+      "inline-flex items-center gap-1 rounded-md border px-2.5 py-1 font-ui text-[10px] font-semibold uppercase tracking-[0.04em] transition-colors duration-200",
+      active ? "border-brand-accent/20 bg-brand-ghost text-brand-accent" : "border-foreground/10 bg-background text-muted-foreground",
     )}
   >
     {children}
@@ -1786,9 +1786,9 @@ const ProductButton = ({
     disabled={disabled}
     onClick={onClick}
     className={cn(
-      "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 font-ui text-[11px] font-bold uppercase tracking-[0.12em] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent/40 disabled:pointer-events-none disabled:opacity-40",
-      variant === "primary" && "bg-brand-accent text-primary-foreground shadow-[0_20px_58px_-34px_hsla(var(--brand-accent),0.75)] hover:-translate-y-0.5 hover:bg-brand-accent/90 active:translate-y-0",
-      variant === "secondary" && "border border-foreground/10 bg-background/80 text-foreground hover:border-brand-accent/30 hover:bg-background",
+      "inline-flex min-h-10 items-center justify-center gap-2 rounded-lg px-4 py-2.5 font-ui text-[12px] font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-accent/30 disabled:pointer-events-none disabled:opacity-40",
+      variant === "primary" && "bg-foreground text-background hover:bg-foreground/90",
+      variant === "secondary" && "border border-foreground/10 bg-background text-foreground hover:border-foreground/20 hover:bg-foreground/[0.03]",
       variant === "quiet" && "border border-transparent bg-transparent text-muted-foreground hover:bg-foreground/5 hover:text-foreground",
     )}
   >
@@ -1797,8 +1797,8 @@ const ProductButton = ({
 );
 
 const ArtifactField = ({ label, value }: { label: string; value: string }) => (
-  <div className="rounded-2xl border border-foreground/10 bg-background/70 p-4 transition-colors hover:border-foreground/20">
-    <p className="font-ui text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground">{label}</p>
+  <div className="rounded-lg border border-foreground/10 bg-background p-4 transition-colors hover:border-foreground/20">
+    <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground">{label}</p>
     <p className="mt-2 text-sm leading-6 text-foreground/80">{value}</p>
   </div>
 );
@@ -1814,21 +1814,21 @@ const WorkspaceShell = ({
   onBack: () => void;
   children: React.ReactNode;
 }) => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-    <div className="sticky top-[68px] z-30 -mx-3 mb-5 flex items-center justify-between border-b border-foreground/5 bg-background/88 px-3 py-2 backdrop-blur-xl lg:static lg:mx-0 lg:mb-10 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+  <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="sticky top-[61px] z-30 -mx-3 mb-5 flex items-center justify-between border-b border-foreground/8 bg-background px-3 py-2 lg:static lg:mx-0 lg:mb-6 lg:border-0 lg:bg-transparent lg:p-0">
       <button
         onClick={onBack}
-        className="group flex items-center gap-3 text-[13px] font-bold text-muted-foreground/85 transition-all hover:text-foreground"
+        className="group flex items-center gap-2 text-[13px] font-semibold text-muted-foreground/85 transition-colors hover:text-foreground"
       >
-        <div className="flex h-8 w-8 items-center justify-center rounded-full border border-foreground/5 bg-foreground/[0.02] transition-all group-hover:border-foreground/10 group-hover:bg-foreground/[0.04]">
+        <div className="flex h-7 w-7 items-center justify-center rounded-md border border-foreground/10 bg-background transition-colors group-hover:border-foreground/20 group-hover:bg-foreground/[0.03]">
           <ArrowLeft className="h-4 w-4" />
         </div>
         Back
       </button>
     </div>
     <div className="mb-5 lg:mb-8">
-      <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-brand-accent">{eyebrow}</p>
-      <h1 className="font-display mt-2 text-[1.65rem] font-bold leading-tight tracking-tight text-foreground sm:text-2xl lg:mt-4">{title}.</h1>
+      <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground">{eyebrow}</p>
+      <h1 className="font-display mt-1.5 text-[1.45rem] font-semibold leading-tight text-foreground sm:text-[1.7rem]">{title}.</h1>
     </div>
     {children}
   </div>
@@ -1837,13 +1837,13 @@ const WorkspaceShell = ({
 const MobileAppTopBar = ({ title }: { title: string }) => (
   <header
     data-testid="mobile-app-topbar"
-    className="sticky top-0 z-40 -mx-3 mb-4 flex items-center justify-between border-b border-foreground/8 bg-background/92 px-3 py-3 backdrop-blur-xl lg:hidden"
+    className="sticky top-0 z-40 -mx-3 mb-4 flex items-center justify-between border-b border-foreground/10 bg-background px-3 py-2.5 lg:hidden"
   >
     <div className="flex min-w-0 items-center gap-3">
       <BrandMark size="sm" />
       <div className="min-w-0">
-        <p className="font-display truncate text-[14px] font-bold tracking-tight text-foreground">Ordersounds</p>
-        <p className="font-ui truncate text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground/80">{title}</p>
+        <p className="font-display truncate text-[14px] font-semibold text-foreground">Ordersounds</p>
+        <p className="font-ui truncate text-[9px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/80">{title}</p>
       </div>
     </div>
     <Badge active>{title}</Badge>
@@ -1879,7 +1879,7 @@ const MobileBottomNav = ({
   return (
     <nav
       aria-label="Mobile label navigation"
-      className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-6 rounded-[22px] border border-foreground/10 bg-background/94 p-1.5 shadow-2xl shadow-black/10 backdrop-blur-xl lg:hidden"
+      className="fixed inset-x-3 bottom-3 z-50 grid grid-cols-6 rounded-xl border border-foreground/10 bg-background p-1.5 shadow-[0_8px_24px_rgba(17,19,24,0.08)] lg:hidden"
       style={{ paddingBottom: "calc(0.375rem + env(safe-area-inset-bottom))" }}
     >
       {items.map((item) => {
@@ -1889,7 +1889,7 @@ const MobileBottomNav = ({
             key={item.label}
             onClick={item.onClick}
             className={cn(
-              "flex min-w-0 flex-col items-center justify-center gap-1 rounded-[16px] px-1 py-2 text-[10px] font-bold transition-colors",
+              "flex min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-1 py-2 text-[10px] font-semibold transition-colors",
               item.active ? "bg-foreground text-background" : "text-muted-foreground hover:bg-foreground/[0.045] hover:text-foreground",
             )}
           >
@@ -1959,11 +1959,13 @@ export default function AiLabelPrototype() {
   useLayoutEffect(() => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
   }, [view]);
 
   const goTo = (next: View) => {
     if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
     setView(next);
+    window.requestAnimationFrame(() => window.scrollTo(0, 0));
     window.setTimeout(() => window.scrollTo(0, 0), 0);
   };
 
@@ -2084,18 +2086,17 @@ export default function AiLabelPrototype() {
   };
 
   return (
-    <div className="app-light min-h-screen bg-background text-foreground selection:bg-brand-accent/20">
+    <div className="app-light min-h-screen bg-background text-foreground selection:bg-brand-accent/15">
       {postSetup ? (
-        <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_20%_-10%,hsla(var(--brand-accent),0.08),transparent_34%),radial-gradient(circle_at_88%_10%,rgba(217,119,87,0.08),transparent_28%),linear-gradient(180deg,hsl(var(--background))_0%,hsl(46,28%,94%)_100%)]" />
+        <div className="pointer-events-none fixed inset-0 bg-background" />
       ) : (
         <>
-          <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_18%_8%,hsla(var(--brand-accent),0.10),transparent_28%),radial-gradient(circle_at_78%_22%,rgba(217,119,87,0.08),transparent_28%),linear-gradient(180deg,hsl(var(--background))_0%,hsl(46,28%,94%)_100%)]" />
-          <div className="pointer-events-none fixed inset-0 opacity-[0.38] [background-image:linear-gradient(hsla(var(--foreground),.035)_1px,transparent_1px),linear-gradient(90deg,hsla(var(--foreground),.035)_1px,transparent_1px)] [background-size:72px_72px]" />
+          <div className="pointer-events-none fixed inset-0 bg-background" />
         </>
       )}
 
       {postSetup && (
-        <div className="relative z-20 mx-auto grid min-h-screen w-full max-w-[1760px] gap-4 px-3 pb-28 pt-0 sm:px-5 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-5 lg:px-8 lg:py-4 lg:pb-4">
+        <div className="relative z-20 mx-auto grid min-h-screen w-full max-w-[1760px] gap-0 px-3 pb-28 pt-0 sm:px-5 lg:grid-cols-[216px_minmax(0,1fr)] lg:px-0 lg:py-0 lg:pb-0">
           <MobileAppTopBar title={mobileTitleText[view]} />
           <LabelHQRail
             active={railActive}
@@ -2105,7 +2106,7 @@ export default function AiLabelPrototype() {
             onMissions={() => { setMissionRoomMode("list"); goTo("missionsWorkspace"); }}
             onSettings={() => goTo("artistProfileWorkspace")}
           />
-          <main className="min-w-0 py-0 lg:py-8">
+          <main className="min-w-0 py-0 lg:px-8 lg:py-7">
             {view === "labelHQ" && (
               <LabelHQScreen
                 profile={profile}
@@ -2410,21 +2411,21 @@ const LabelHQScreen = ({
   onWorkspace: (view: View) => void;
   onDrawer: (drawer: DrawerKind) => void;
 }) => (
-  <section className="mx-auto max-w-7xl text-foreground lg:px-8">
-    <div className="mb-4 flex flex-col gap-4 lg:mb-6 lg:flex-row lg:items-end lg:justify-between">
+  <section className="mx-auto max-w-7xl text-foreground">
+    <div className="mb-4 flex flex-col gap-3 lg:mb-5 lg:flex-row lg:items-end lg:justify-between">
       <div>
-        <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-brand-accent">Label Read</p>
-        <h1 className="font-display mt-2 text-[2.25rem] font-bold leading-none tracking-tight text-foreground sm:text-[2.7rem] lg:text-[3.2rem]">Label HQ</h1>
+        <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground">Label Read</p>
+        <h1 className="font-display mt-1.5 text-[2rem] font-semibold leading-none text-foreground sm:text-[2.25rem] lg:text-[2.5rem]">Label HQ</h1>
       </div>
       <div className="flex gap-3">
-        <button onClick={() => onWorkspace("artistProfileWorkspace")} className="group flex h-11 items-center gap-2 rounded-full border border-foreground/10 bg-background/50 px-5 text-[13px] font-bold text-foreground transition-all hover:bg-foreground/5 hover:border-foreground/20 active:scale-95 shadow-sm backdrop-blur-sm">
+        <button onClick={() => onWorkspace("artistProfileWorkspace")} className="group flex h-10 items-center gap-2 rounded-lg border border-foreground/10 bg-background px-4 text-[13px] font-semibold text-foreground transition-colors hover:bg-foreground/5 hover:border-foreground/20">
           <Settings className="h-4 w-4 opacity-40 transition-transform group-hover:rotate-45" />
           Workspace
         </button>
       </div>
     </div>
 
-    <div className="mb-5 grid grid-cols-2 overflow-hidden rounded-[20px] border border-foreground/10 bg-background/76 shadow-sm backdrop-blur md:grid-cols-4 lg:mb-8 lg:rounded-[24px]">
+    <div className="mb-5 grid grid-cols-2 overflow-hidden rounded-xl border border-foreground/10 bg-background md:grid-cols-4 lg:mb-6">
       {[
         { label: "Focus", value: profile.release, meta: "Music", icon: Mic2, tone: "text-brand-accent bg-brand-accent/[0.09]", actionLabel: "Open active music focus", onClick: () => onWorkspace("musicWorkspace") },
         { label: "Attention", value: "Split approval", meta: "Rights", icon: AlertCircle, tone: "text-[#c2410c] bg-[#f97316]/10", actionLabel: "Open blocked rights task", onClick: () => onWorkspace("tasksWorkspace") },
@@ -2440,17 +2441,17 @@ const LabelHQScreen = ({
             onClick={item.onClick}
             aria-label={item.actionLabel}
             className={cn(
-              "group flex min-w-0 items-center gap-3 border-b border-r border-foreground/5 px-3 py-3 text-left transition-colors hover:bg-foreground/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/40 even:border-r-0 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 lg:px-4 lg:py-4",
+              "group flex min-w-0 items-center gap-3 border-b border-r border-foreground/8 px-3 py-3 text-left transition-colors hover:bg-foreground/[0.025] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/30 even:border-r-0 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 lg:px-4 lg:py-3.5",
               isMissionCount && "justify-center text-center",
             )}
           >
-            <span className={cn("flex h-9 w-9 shrink-0 items-center justify-center rounded-[13px]", item.tone)}>
+            <span className={cn("flex h-8 w-8 shrink-0 items-center justify-center rounded-lg", item.tone)}>
               <Icon className="h-4 w-4" />
             </span>
             <div className={cn("min-w-0", isMissionCount && "flex min-w-[54px] flex-col items-center")}>
-              <p className="font-ui text-[9px] font-bold uppercase tracking-[0.13em] text-muted-foreground/90">{item.label}</p>
-              <p className={cn("mt-1 truncate font-bold leading-tight text-foreground", isMissionCount ? "text-center font-display text-[24px] leading-none lg:text-[26px]" : "text-[14px] lg:text-[15px]")}>{item.value}</p>
-              <p className="mt-0.5 truncate text-[11px] font-semibold leading-snug text-muted-foreground/58">{item.meta}</p>
+              <p className="font-ui text-[9px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/90">{item.label}</p>
+              <p className={cn("mt-1 truncate font-semibold leading-tight text-foreground", isMissionCount ? "text-center font-display text-[22px] leading-none lg:text-[24px]" : "text-[14px] lg:text-[15px]")}>{item.value}</p>
+              <p className="mt-0.5 truncate text-[11px] font-medium leading-snug text-muted-foreground/65">{item.meta}</p>
             </div>
             <ChevronRight className="ml-auto hidden h-4 w-4 shrink-0 text-muted-foreground/55 transition-transform group-hover:translate-x-0.5 group-hover:text-brand-accent sm:block" />
           </button>
@@ -2459,17 +2460,17 @@ const LabelHQScreen = ({
     </div>
 
     <div data-testid="mobile-priority-stack" className="mb-5 grid gap-3 lg:hidden">
-      <button onClick={() => onWorkspace("tasksWorkspace")} className="flex items-center justify-between rounded-[18px] border border-[#f97316]/15 bg-[#f97316]/[0.06] p-4 text-left">
+      <button onClick={() => onWorkspace("tasksWorkspace")} className="flex items-center justify-between rounded-xl border border-[#f97316]/20 bg-[#fff7ed] p-4 text-left">
         <span>
-          <span className="font-ui block text-[10px] font-bold uppercase tracking-[0.14em] text-[#c2410c]">Needs Attention</span>
-          <span className="mt-1 block text-[14px] font-bold text-foreground">Split approval is holding release clearance.</span>
+          <span className="font-ui block text-[10px] font-semibold uppercase tracking-[0.04em] text-[#c2410c]">Needs Attention</span>
+          <span className="mt-1 block text-[14px] font-semibold text-foreground">Split approval is holding release clearance.</span>
         </span>
         <ChevronRight className="h-4 w-4 shrink-0 text-[#c2410c]" />
       </button>
-      <button onClick={() => onWorkspace("missionsWorkspace")} className="flex items-center justify-between rounded-[18px] border border-brand-accent/15 bg-brand-accent/[0.045] p-4 text-left">
+      <button onClick={() => onWorkspace("missionsWorkspace")} className="flex items-center justify-between rounded-xl border border-brand-accent/15 bg-brand-accent/[0.035] p-4 text-left">
         <span>
-          <span className="font-ui block text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">Active Missions</span>
-          <span className="mt-1 block text-[14px] font-bold text-foreground">{missions.filter((mission) => mission.status !== "complete" && !mission.archived).length} open artist workstreams</span>
+          <span className="font-ui block text-[10px] font-semibold uppercase tracking-[0.04em] text-brand-accent">Active Missions</span>
+          <span className="mt-1 block text-[14px] font-semibold text-foreground">{missions.filter((mission) => mission.status !== "complete" && !mission.archived).length} open artist workstreams</span>
         </span>
         <ChevronRight className="h-4 w-4 shrink-0 text-brand-accent" />
       </button>
@@ -2481,16 +2482,16 @@ const LabelHQScreen = ({
         
         {/* REFINED STAFF GRID */}
         <div className="space-y-5">
-           <div className="flex items-center justify-between border-b border-foreground/5 pb-4">
-              <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Label Staff</p>
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50">5 active AI units</span>
+           <div className="flex items-center justify-between border-b border-foreground/8 pb-3">
+              <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Label Staff</p>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/55">5 active AI units</span>
            </div>
-           <div data-testid="mobile-team-strip" className="grid gap-2 rounded-[18px] border border-foreground/8 bg-background/82 p-3 lg:hidden">
+           <div data-testid="mobile-team-strip" className="grid gap-2 rounded-xl border border-foreground/10 bg-background p-3 lg:hidden">
              <div className="flex items-center justify-between">
-               <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">Team readiness</p>
-               <span className="text-[11px] font-bold text-muted-foreground">1 ready / 4 need context</span>
+               <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-brand-accent">Team readiness</p>
+               <span className="text-[11px] font-semibold text-muted-foreground">1 ready / 4 need context</span>
              </div>
-             <button onClick={onManager} className="flex items-center justify-between rounded-[14px] bg-foreground/[0.035] px-3 py-2 text-left text-[13px] font-bold text-foreground">
+             <button onClick={onManager} className="flex items-center justify-between rounded-lg bg-foreground/[0.035] px-3 py-2 text-left text-[13px] font-semibold text-foreground">
                Manager ready for decisions
                <ChevronRight className="h-4 w-4 text-brand-accent" />
              </button>
@@ -2500,9 +2501,9 @@ const LabelHQScreen = ({
         
         {/* COMPACT MISSIONS */}
         <div className="space-y-5">
-           <div className="flex items-center justify-between border-b border-foreground/5 pb-4">
-              <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Active Missions</p>
-              <button onClick={() => onWorkspace("missionsWorkspace")} className="text-[11px] font-bold text-brand-accent hover:underline">See all missions Ã¢â€ â€™</button>
+           <div className="flex items-center justify-between border-b border-foreground/8 pb-3">
+              <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Active Missions</p>
+              <button onClick={() => onWorkspace("missionsWorkspace")} className="text-[11px] font-semibold text-brand-accent hover:underline">See all missions -&gt;</button>
            </div>
            <LightMissionCards missions={missions.filter(m => m.status !== "complete")} onMission={onMission} onWorkspace={onWorkspace} />
         </div>
@@ -2848,7 +2849,7 @@ const MusicProjectCard = ({ project, onOpen, getMusicObjectFn }: { project: Musi
       className="group overflow-hidden rounded-[24px] border border-foreground/8 bg-background text-left shadow-sm transition-all hover:-translate-y-0.5 hover:border-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/[0.03]"
     >
       <div className="grid min-h-[150px] grid-cols-[110px_minmax(0,1fr)] border-b border-foreground/5">
-        <div className="flex items-end bg-[linear-gradient(145deg,rgba(18,18,18,0.92),rgba(82,44,110,0.75)),radial-gradient(circle_at_30%_20%,rgba(201,255,46,0.35),transparent_34%)] p-4 text-background">
+        <div className="flex items-end border-b border-foreground/10 bg-foreground p-4 text-background">
           <span className="font-display text-[32px] font-bold leading-none">{project.title.split(" ").map((word) => word[0]).join("").slice(0, 2)}</span>
         </div>
         <div className="flex flex-col justify-between p-5">
@@ -2960,7 +2961,7 @@ const MusicSongDetail = ({
             aria-pressed={activeTab === tab}
             onClick={() => onTabChange(tab)}
             className={cn(
-              "rounded-full border px-4 py-2 text-[11px] font-bold uppercase tracking-[0.1em] transition-colors",
+              "rounded-full border px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.04em] transition-colors",
               activeTab === tab ? "border-foreground bg-foreground text-background" : "border-foreground/10 bg-background text-muted-foreground hover:text-foreground",
             )}
           >
@@ -2975,31 +2976,31 @@ const MusicSongDetail = ({
             <div className="grid gap-0 lg:grid-cols-[minmax(0,1fr)_300px]">
               <div className="p-5 sm:p-6">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">Manager next move</span>
+                  <span className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">Manager next move</span>
                   <span className={cn(
-                    "rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.08em]",
+                    "rounded-md px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.04em]",
                     song.blocker === "No active blocker" ? "bg-success/10 text-success" : "bg-warning/10 text-warning",
                   )}>
                     {song.blocker === "No active blocker" ? "Ready" : "Blocked"}
                   </span>
                 </div>
-                <p className="mt-4 max-w-3xl font-display text-[24px] font-bold leading-tight tracking-tight text-foreground">{song.nextMove}</p>
-                <div className="mt-5 rounded-[16px] border border-foreground/8 bg-foreground/[0.025] p-4">
-                  <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground/82">Read</p>
-                  <p className="mt-2 text-[14px] font-semibold leading-relaxed text-foreground/82">{song.managerRead}</p>
+                <p className="mt-4 max-w-3xl font-display text-[20px] font-semibold leading-tight text-foreground">{song.nextMove}</p>
+                <div className="mt-5 rounded-lg border border-foreground/8 bg-foreground/[0.018] p-4">
+                  <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">Read</p>
+                  <p className="mt-2 text-[14px] font-normal leading-relaxed text-muted-foreground/90">{song.managerRead}</p>
                 </div>
               </div>
               <div className="border-t border-foreground/8 bg-background/62 p-5 lg:border-l lg:border-t-0">
-                <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground/82">Song state</p>
+                <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">Song state</p>
                 <div className="mt-4 grid gap-3">
                   {[
                     { label: "Blocker", value: song.blocker },
                     { label: "Rights / assets", value: `${song.rightsState}. ${song.assets.join(", ")}.` },
                     { label: "Source limit", value: `${song.sourceKind}: ${song.sourceLimit}` },
                   ].map((item) => (
-                    <div key={item.label} className="rounded-[14px] border border-foreground/8 bg-foreground/[0.02] px-3.5 py-3">
-                      <p className="font-ui text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground/72">{item.label}</p>
-                      <p className="mt-1 text-[12.5px] font-bold leading-relaxed text-foreground/82">{item.value}</p>
+                    <div key={item.label} className="rounded-lg border border-foreground/8 bg-foreground/[0.018] px-3.5 py-3">
+                      <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/72">{item.label}</p>
+                      <p className="mt-1 text-[12.5px] font-normal leading-relaxed text-muted-foreground/90">{item.value}</p>
                     </div>
                   ))}
                 </div>
@@ -3014,12 +3015,12 @@ const MusicSongDetail = ({
         <div className="surface-elevated rounded-[22px] p-5 shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-4 border-b border-foreground/8 pb-4">
             <div>
-              <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">File manifest</p>
-              <h4 className="mt-1 font-display text-[20px] font-bold leading-tight text-foreground">Assets</h4>
+              <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">File manifest</p>
+              <h4 className="mt-1 font-display text-[18px] font-semibold leading-tight text-foreground">Assets</h4>
             </div>
             <div className="flex flex-wrap justify-end gap-2">
-              <span className="rounded-full border border-foreground/8 bg-background/74 px-2.5 py-1 text-[11px] font-bold text-foreground/78">{fileReadyCount}/{fileAssets.length || 0} ready</span>
-              {fileMissingCount ? <span className="rounded-full bg-warning/10 px-2.5 py-1 text-[11px] font-bold text-warning">{fileMissingCount} missing</span> : null}
+              <span className="rounded-md border border-foreground/8 bg-background/74 px-2.5 py-1 text-[11px] font-semibold text-foreground/78">{fileReadyCount}/{fileAssets.length || 0} ready</span>
+              {fileMissingCount ? <span className="rounded-md bg-warning/10 px-2.5 py-1 text-[11px] font-semibold text-warning">{fileMissingCount} missing</span> : null}
             </div>
           </div>
 
@@ -3027,13 +3028,13 @@ const MusicSongDetail = ({
             {fileSections.map((section) => (
               <div key={section.title} className="border-b border-foreground/8 last:border-b-0">
                 <div className="flex items-center justify-between gap-4 bg-foreground/[0.025] px-4 py-3">
-                  <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground/82">{section.title}</p>
-                  <span className="text-[11px] font-bold text-muted-foreground">{countCompleteMusicItems(section.assets)}/{section.assets.length} ready</span>
+                  <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">{section.title}</p>
+                  <span className="text-[11px] font-semibold text-muted-foreground">{countCompleteMusicItems(section.assets)}/{section.assets.length} ready</span>
                 </div>
                 <div className="divide-y divide-foreground/6">
                   {section.assets.map((asset) => (
                     <div key={`${section.title}-${asset.label}`} className="grid gap-3 px-4 py-3 sm:grid-cols-[minmax(0,1fr)_minmax(180px,0.6fr)_auto] sm:items-center">
-                      <span className="min-w-0 text-[13px] font-bold text-foreground">{asset.label}</span>
+                      <span className="min-w-0 text-[13px] font-medium text-foreground">{asset.label}</span>
                       <span className="text-[11px] font-semibold text-muted-foreground">{asset.action}</span>
                       <MusicStatusPill value={asset.status} />
                     </div>
@@ -3049,13 +3050,13 @@ const MusicSongDetail = ({
         <div className="surface-elevated rounded-[22px] p-5 shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-4 border-b border-foreground/8 pb-4">
             <div>
-              <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">Metadata board</p>
-              <h4 className="mt-1 font-display text-[20px] font-bold leading-tight text-foreground">Song identity</h4>
+              <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">Metadata board</p>
+              <h4 className="mt-1 font-display text-[18px] font-semibold leading-tight text-foreground">Song identity</h4>
             </div>
             <div className="flex flex-wrap justify-end gap-2">
-              <span className="rounded-full bg-success/10 px-2.5 py-1 text-[11px] font-bold text-success">{detailConfirmedCount} confirmed</span>
-              {detailDraftCount ? <span className="rounded-full bg-foreground/[0.055] px-2.5 py-1 text-[11px] font-bold text-muted-foreground">{detailDraftCount} draft</span> : null}
-              {detailMissingCount ? <span className="rounded-full bg-warning/10 px-2.5 py-1 text-[11px] font-bold text-warning">{detailMissingCount} missing</span> : null}
+              <span className="rounded-md bg-success/10 px-2.5 py-1 text-[11px] font-semibold text-success">{detailConfirmedCount} confirmed</span>
+              {detailDraftCount ? <span className="rounded-md bg-foreground/[0.055] px-2.5 py-1 text-[11px] font-semibold text-muted-foreground">{detailDraftCount} draft</span> : null}
+              {detailMissingCount ? <span className="rounded-md bg-warning/10 px-2.5 py-1 text-[11px] font-semibold text-warning">{detailMissingCount} missing</span> : null}
             </div>
           </div>
 
@@ -3063,15 +3064,15 @@ const MusicSongDetail = ({
             {detailGroups.map((group) => (
               <section key={group.title} className="rounded-[16px] border border-foreground/8 bg-background/72">
                 <div className="flex items-center justify-between gap-4 border-b border-foreground/8 bg-foreground/[0.025] px-4 py-3">
-                  <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground/82">{group.title}</p>
-                  <span className="text-[11px] font-bold text-muted-foreground">{countCompleteMusicItems(group.fields)}/{group.fields.length} confirmed</span>
+                  <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">{group.title}</p>
+                  <span className="text-[11px] font-semibold text-muted-foreground">{countCompleteMusicItems(group.fields)}/{group.fields.length} confirmed</span>
                 </div>
                 <div className="grid divide-y divide-foreground/6 lg:grid-cols-2 lg:divide-x lg:divide-y-0">
                   {group.fields.map((field) => (
                     <div key={`${group.title}-${field.label}`} className="flex min-h-[74px] items-center justify-between gap-4 border-b border-foreground/6 px-4 py-3 last:border-b-0 lg:[&:nth-last-child(-n+2)]:border-b-0">
                       <span className="min-w-0">
-                        <span className="block text-[11px] font-bold uppercase tracking-[0.08em] text-muted-foreground/75">{field.label}</span>
-                        <span className="mt-1 block truncate text-[14px] font-bold text-foreground">{field.value}</span>
+                        <span className="block text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/75">{field.label}</span>
+                        <span className="mt-1 block truncate text-[14px] font-medium text-foreground">{field.value}</span>
                       </span>
                       <MusicStatusPill value={field.status} />
                     </div>
@@ -3175,15 +3176,15 @@ const MusicProjectDetail = ({
 
 const MusicDetailTop = ({ object, label, onBack }: { object: MusicObject; label: string; onBack: () => void }) => (
   <div className="rounded-[26px] border border-foreground/8 bg-background/88 p-5 shadow-sm">
-    <button type="button" onClick={onBack} className="mb-5 inline-flex items-center gap-2 text-[12px] font-bold text-muted-foreground hover:text-foreground">
+    <button type="button" onClick={onBack} className="mb-5 inline-flex items-center gap-2 text-[12px] font-semibold text-muted-foreground hover:text-foreground">
       <ArrowLeft className="h-4 w-4" />
       Back to Music
     </button>
     <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
       <div>
-        <p className="font-ui text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">{label}</p>
-        <h2 className="mt-2 font-display text-[34px] font-bold leading-tight tracking-tight text-foreground lg:text-[44px]">{object.title}</h2>
-        <p className="mt-3 max-w-3xl text-[15px] font-semibold leading-relaxed text-muted-foreground/84">{object.note}</p>
+        <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">{label}</p>
+        <h2 className="mt-2 font-display text-[26px] font-semibold leading-tight text-foreground lg:text-[32px]">{object.title}</h2>
+        <p className="mt-3 max-w-3xl text-[14px] font-normal leading-relaxed text-muted-foreground/84">{object.note}</p>
       </div>
       {object.kind === "song" ? (
         <MusicStageControl song={object} />
@@ -3216,31 +3217,31 @@ const MusicLinkedWork = ({
     <aside data-testid="music-linked-work" className="surface-elevated rounded-[22px] p-5 shadow-sm">
       <div className="flex items-start justify-between gap-3 border-b border-foreground/8 pb-4">
         <div>
-          <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-brand-accent">Linked work</p>
-          <h4 className="mt-1 font-display text-[18px] font-bold leading-tight text-foreground">Mission path</h4>
+          <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">Linked work</p>
+          <h4 className="mt-1 font-display text-[16px] font-semibold leading-tight text-foreground">Mission path</h4>
         </div>
         {linkedTasks.length ? (
-          <span className="rounded-full border border-foreground/8 bg-background/74 px-2.5 py-1 text-[11px] font-bold text-foreground/78">{linkedTasks.length} tasks</span>
+          <span className="rounded-md border border-foreground/8 bg-background/74 px-2.5 py-1 text-[11px] font-semibold text-foreground/78">{linkedTasks.length} tasks</span>
         ) : null}
       </div>
 
       <div className="mt-4 grid gap-4">
         <section className="rounded-[16px] border border-foreground/8 bg-background/72">
           <div className="border-b border-foreground/8 bg-foreground/[0.025] px-4 py-3">
-            <p className="font-ui text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground/82">Mission</p>
+            <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/82">Mission</p>
           </div>
           <div className="p-3">
             {linkedMissions.length ? linkedMissions.map((mission) => (
               <button key={mission.id} type="button" onClick={() => onMission(mission.id)} className="grid w-full gap-3 rounded-[12px] px-2 py-2 text-left transition-colors hover:bg-brand-accent/[0.04]">
                 <span className="min-w-0">
-                  <span className="block text-[13px] font-bold leading-snug text-foreground">{mission.title}</span>
+                  <span className="block text-[13px] font-medium leading-snug text-foreground">{mission.title}</span>
                   <span className="mt-1 block text-[11px] font-semibold leading-relaxed text-muted-foreground">{mission.review}</span>
                 </span>
                 <span className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="rounded-full bg-foreground/[0.055] px-2.5 py-1 text-[11px] font-bold text-muted-foreground">
+                  <span className="rounded-md bg-foreground/[0.055] px-2.5 py-1 text-[11px] font-semibold text-muted-foreground">
                     {linkedTasks.length} task{linkedTasks.length === 1 ? "" : "s"} attached
                   </span>
-                  <span className="text-[11px] font-bold text-brand-accent">Open linked mission</span>
+                  <span className="text-[11px] font-semibold text-brand-accent">Open linked mission</span>
                 </span>
               </button>
             )) : (
@@ -3323,19 +3324,19 @@ const LabelHQRail = ({
   return (
     <nav
       aria-label="Record label navigation"
-      className="hidden min-w-0 flex-col justify-between overflow-y-auto rounded-[20px] border border-foreground/10 bg-background p-2 shadow-2xl shadow-black/[0.05] lg:sticky lg:top-4 lg:flex lg:max-h-[calc(100vh-32px)]"
+      className="hidden min-w-0 flex-col justify-between overflow-y-auto border-r border-foreground/10 bg-background p-3 lg:sticky lg:top-0 lg:flex lg:h-screen"
     >
       {/* TOP: brand + nav */}
       <div className="flex flex-col gap-2">
-        <div className="flex items-center gap-3 px-3 py-3">
+        <div className="flex items-center gap-3 px-2 py-2.5">
           <BrandMark size="sm" />
           <div className="min-w-0">
-            <p className="font-display truncate text-[14px] font-display font-bold tracking-tight text-foreground">Ordersounds</p>
-            <p className="font-ui text-[9px] font-bold tracking-[0.1em] text-muted-foreground uppercase opacity-70">AI RECORD LABEL</p>
+            <p className="font-display truncate text-[14px] font-semibold text-foreground">Ordersounds</p>
+            <p className="font-ui text-[9px] font-semibold tracking-[0.04em] text-muted-foreground uppercase opacity-70">AI RECORD LABEL</p>
           </div>
         </div>
 
-        <div className="mx-3 h-px shrink-0 bg-foreground/5" />
+        <div className="mx-2 h-px shrink-0 bg-foreground/8" />
 
         <div className="flex shrink-0 flex-col gap-0.5 py-1">
           {railItems.map((item) => {
@@ -3346,9 +3347,9 @@ const LabelHQRail = ({
                 aria-label={item.label === "Music" ? "Open Music workspace" : undefined}
                 onClick={item.onClick}
                 className={cn(
-                  "flex h-10 w-full items-center gap-2.5 rounded-xl px-3 font-ui text-[13px] font-bold transition-all duration-200",
+                  "flex h-9 w-full items-center gap-2.5 rounded-lg px-2.5 font-ui text-[13px] font-semibold transition-colors duration-200",
                   item.active
-                    ? "bg-foreground text-background shadow-md"
+                    ? "bg-foreground text-background"
                     : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground",
                 )}
               >
@@ -3362,13 +3363,13 @@ const LabelHQRail = ({
 
       {/* BOTTOM: Settings always visible */}
       <div className="mt-4 shrink-0">
-        <div className="mx-3 mb-2 h-px bg-foreground/5" />
+        <div className="mx-2 mb-2 h-px bg-foreground/8" />
         <button
           onClick={onSettings}
           className={cn(
-            "flex h-10 w-full items-center gap-2.5 rounded-xl px-3 font-ui text-[13px] font-bold transition-all duration-200",
+            "flex h-9 w-full items-center gap-2.5 rounded-lg px-2.5 font-ui text-[13px] font-semibold transition-colors duration-200",
             active === "settings"
-              ? "bg-foreground text-background shadow-md"
+              ? "bg-foreground text-background"
               : "text-muted-foreground hover:bg-foreground/5 hover:text-foreground",
           )}
         >
@@ -3383,44 +3384,44 @@ const LabelHQRail = ({
 
 
 const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: ArtistProfile; onManager: () => void; onEvidence: () => void }) => (
-  <div className="flex flex-col overflow-hidden rounded-[22px] border border-foreground/5 bg-background shadow-xl shadow-black/[0.02] lg:rounded-[28px] lg:shadow-2xl">
+  <div className="flex flex-col overflow-hidden rounded-xl border border-foreground/10 bg-background shadow-sm">
     {/* Header */}
-    <div className="flex flex-col gap-4 border-b border-foreground/5 bg-foreground/[0.01] px-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-7 lg:py-5">
+    <div className="flex flex-col gap-4 border-b border-foreground/8 bg-foreground/[0.015] px-4 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-6 lg:py-4">
       <div className="flex items-center gap-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-accent/10 text-brand-accent">
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-foreground/[0.04] text-brand-accent">
           <Calendar className="h-4 w-4" />
         </div>
         <div>
-          <p className="font-ui text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Today's Brief</p>
-          <p className="text-[13px] font-bold text-foreground opacity-90">{profile.name} - Artist operating read</p>
+          <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Today's Brief</p>
+          <p className="text-[13px] font-semibold text-foreground opacity-90">{profile.name} - Artist operating read</p>
         </div>
       </div>
       <button
         onClick={onManager}
-        className="w-full rounded-full bg-foreground px-6 py-2.5 text-[12px] font-bold text-background shadow-md transition-all hover:opacity-90 active:scale-95 sm:w-auto"
+        className="w-full rounded-lg bg-foreground px-5 py-2.5 text-[12px] font-semibold text-background transition-colors hover:bg-foreground/90 sm:w-auto"
       >
         Talk to Manager
       </button>
     </div>
 
     {/* Brief Body */}
-      <div className="px-4 py-5 lg:px-7 lg:py-7">
-      <h2 className="font-display max-w-2xl text-[1.35rem] font-bold leading-tight tracking-tight text-foreground lg:text-2xl">
+      <div className="px-4 py-5 lg:px-6 lg:py-6">
+      <h2 className="font-display max-w-2xl text-[1.25rem] font-semibold leading-tight text-foreground lg:text-[1.55rem]">
         Sable Day is building real breakout pressure, but the next move is still about proof.
       </h2>
       
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         <div className="space-y-2.5">
-           <p className="font-ui text-[11px] font-bold uppercase tracking-[0.1em] text-success">Signal Proof</p>
-           <div className="rounded-2xl border border-foreground/5 bg-foreground/[0.01] p-4 lg:p-5">
+           <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-success">Signal Proof</p>
+           <div className="rounded-lg border border-foreground/8 bg-foreground/[0.015] p-4">
               <p className="text-[15px] font-medium leading-relaxed text-foreground/80">
                 128.4k tracked streams across connected sources. TikTok hook clips are running 4.8x above baseline. Chicago is up 31% week over week, and Lagos comments are repeating the Night Bus lyric.
               </p>
            </div>
         </div>
         <div className="space-y-2.5">
-           <p className="font-ui text-[11px] font-bold uppercase tracking-[0.1em] text-brand-accent">Manager Read</p>
-           <div className="rounded-2xl border border-brand-accent/10 bg-brand-accent/[0.02] p-4 lg:p-5">
+           <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-brand-accent">Manager Read</p>
+           <div className="rounded-lg border border-brand-accent/10 bg-brand-accent/[0.02] p-4">
               <p className="text-[15px] font-medium leading-relaxed text-foreground/80">
                 The artist is no longer sitting on local attention only. The sound, story, and audience response are starting to travel, but the label should not treat this as scale-ready until private saves, source-of-stream, split approval, distributor confirmation, and campaign proof are cleaner.
               </p>
@@ -3428,7 +3429,7 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
         </div>
       </div>
 
-      <div className="mt-5 max-w-3xl space-y-3 border-t border-foreground/5 pt-5 text-[15px] font-medium leading-relaxed text-muted-foreground/80 lg:mt-6 lg:space-y-4 lg:pt-6 lg:text-[16px]">
+      <div className="mt-5 max-w-3xl space-y-3 border-t border-foreground/8 pt-5 text-[14px] font-medium leading-relaxed text-muted-foreground/82 lg:mt-6 lg:space-y-4 lg:pt-6 lg:text-[15px]">
         <p>
           Night Bus is the strongest current signal because it is connecting story, sound, and audience reaction. The opportunity is real, but the Manager should protect the artist from turning early movement into rushed spend or public commitments.
         </p>
@@ -3438,10 +3439,10 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
       </div>
 
       {/* Today's directive */}
-      <div className="mt-6 rounded-[22px] border border-foreground/5 bg-foreground/[0.01] p-5">
-        <p className="font-ui text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent">Today's Directive</p>
-        <p className="mt-1 font-ui text-[10px] font-bold uppercase tracking-[0.13em] text-muted-foreground/85">Next Move</p>
-        <p className="mt-3 text-[15px] font-bold leading-relaxed text-foreground opacity-90">
+      <div className="mt-6 rounded-lg border border-foreground/8 bg-foreground/[0.015] p-5">
+        <p className="font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-brand-accent">Today's Directive</p>
+        <p className="mt-1 font-ui text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/85">Next Move</p>
+        <p className="mt-3 text-[15px] font-semibold leading-relaxed text-foreground opacity-90">
           Protect the momentum. Keep release work moving, clear rights and delivery gaps, and wait for cleaner private signal before increasing spend, pressure, or public commitments.
         </p>
       </div>
@@ -3449,11 +3450,11 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <button
           onClick={onEvidence}
-          className="text-[12px] font-bold text-muted-foreground/85 underline-offset-4 hover:text-brand-accent hover:underline transition-all"
+          className="text-[12px] font-semibold text-muted-foreground/85 underline-offset-4 hover:text-brand-accent hover:underline transition-colors"
         >
           View supporting evidence
         </button>
-        <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/50 italic">Generated by AI Manager 08:30 AM</span>
+        <span className="text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/55">Generated by AI Manager 08:30 AM</span>
       </div>
     </div>
   </div>
@@ -3462,25 +3463,25 @@ const LightMorningBriefPanel = ({ profile, onManager, onEvidence }: { profile: A
 const LightAttentionSummary = ({ onDrawer, onWorkspace }: { onDrawer: (drawer: DrawerKind) => void; onWorkspace: (view: View) => void }) => (
   <div className="flex flex-col gap-6">
     <section className="space-y-6">
-      <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Needs Attention</p>
-      <div className="flex flex-col gap-4">
-        <button onClick={() => onWorkspace("tasksWorkspace")} className="group flex flex-col gap-3 rounded-[24px] border border-foreground/5 bg-background p-6 text-left transition-all hover:border-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/[0.02]">
+      <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Needs Attention</p>
+      <div className="flex flex-col gap-3">
+        <button onClick={() => onWorkspace("tasksWorkspace")} className="group flex flex-col gap-3 rounded-xl border border-foreground/10 bg-background p-4 text-left transition-colors hover:border-brand-accent/20 hover:bg-foreground/[0.015]">
           <div className="flex items-center gap-2.5">
              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-warning/10 text-warning">
                 <BadgeDollarSign className="h-4 w-4" />
              </div>
-             <p className="text-[13px] font-bold text-foreground tracking-tight">Split approval</p>
+             <p className="text-[13px] font-semibold text-foreground">Split approval</p>
           </div>
           <p className="text-[12px] font-medium text-muted-foreground/80 leading-relaxed">
              The Manager is waiting on the signed split sheet before the June 12 release can be treated as clean.
           </p>
         </button>
-        <button onClick={() => onDrawer("evidence")} className="group flex flex-col gap-3 rounded-[24px] border border-foreground/5 bg-background p-6 text-left transition-all hover:border-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/[0.02]">
+        <button onClick={() => onDrawer("evidence")} className="group flex flex-col gap-3 rounded-xl border border-foreground/10 bg-background p-4 text-left transition-colors hover:border-brand-accent/20 hover:bg-foreground/[0.015]">
           <div className="flex items-center gap-2.5">
              <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-accent/10 text-brand-accent">
                 <Upload className="h-4 w-4" />
              </div>
-             <p className="text-[13px] font-bold text-foreground tracking-tight">Distributor package</p>
+             <p className="text-[13px] font-semibold text-foreground">Distributor package</p>
           </div>
           <p className="text-[12px] font-medium text-muted-foreground/80 leading-relaxed">
              Distributor confirmation is still needed before the June 12 delivery path can be treated as clean.
@@ -3490,16 +3491,16 @@ const LightAttentionSummary = ({ onDrawer, onWorkspace }: { onDrawer: (drawer: D
     </section>
 
     <section className="space-y-6">
-      <p className="font-ui text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/88">Recent Movement</p>
-      <div className="space-y-8 pl-1">
+      <p className="font-ui text-[11px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Recent Movement</p>
+      <div className="space-y-6 pl-1">
         {[
           { label: "Milestone", title: "Started content testing", time: "2h ago" },
           { label: "Staff", title: "Creative brief sent to Marketing", time: "5h ago" },
           { label: "System", title: "Nigeria signal verified by Manager", time: "Yesterday" }
         ].map((item, i) => (
           <div key={i} className="relative flex flex-col gap-2 pl-6 before:absolute before:left-0 before:top-1 before:h-2 before:w-2 before:rounded-full before:bg-foreground/5">
-            <p className="text-[12px] font-bold text-foreground leading-tight tracking-tight">{item.title}</p>
-            <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/88">{item.label} Ã‚Â· {item.time}</p>
+            <p className="text-[12px] font-semibold text-foreground leading-tight">{item.title}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">{item.label} / {item.time}</p>
           </div>
         ))}
       </div>
@@ -3514,7 +3515,7 @@ const LightAgentBench = ({
   onManager: () => void;
   onLockedAgent: (agent: Agent) => void;
 }) => (
-  <div className="hidden grid-cols-2 gap-4 md:grid-cols-3 lg:grid lg:grid-cols-5">
+  <div className="hidden grid-cols-2 gap-3 md:grid-cols-3 lg:grid lg:grid-cols-5">
     {agents.map((agent) => {
       const Icon = agent.icon;
       const available = agent.status === "available";
@@ -3524,23 +3525,23 @@ const LightAgentBench = ({
           key={agent.id}
           onClick={() => (agent.id === "manager" ? onManager() : onLockedAgent(agent))}
           className={cn(
-            "group relative flex flex-col items-center gap-5 rounded-[28px] border p-8 text-center transition-all duration-500",
+            "group relative flex flex-col items-center gap-4 rounded-xl border p-5 text-center transition-colors duration-200",
             available 
-              ? "border-foreground/10 bg-background shadow-lg shadow-black/[0.02] hover:border-brand-accent/30 hover:shadow-xl hover:shadow-brand-accent/5 hover:-translate-y-1" 
-              : "border-foreground/5 bg-foreground/[0.01] opacity-60 hover:opacity-100"
+              ? "border-foreground/10 bg-background hover:border-brand-accent/25 hover:bg-foreground/[0.012]"
+              : "border-foreground/8 bg-foreground/[0.012] opacity-65 hover:opacity-100"
           )}
         >
           <div
             className={cn(
-              "flex h-14 w-14 items-center justify-center rounded-[20px] transition-all duration-500",
-              available ? "bg-foreground text-background shadow-lg" : "bg-foreground/5 text-foreground/20",
+              "flex h-11 w-11 items-center justify-center rounded-lg transition-colors duration-200",
+              available ? "bg-foreground text-background" : "bg-foreground/5 text-foreground/25",
             )}
           >
             {available ? <Icon className="h-6 w-6" /> : <Lock className="h-5 w-5" />}
           </div>
           <div className="min-w-0 flex-1">
-            <p className={cn("text-[14px] font-bold leading-tight tracking-tight", available ? "text-foreground" : "text-muted-foreground")}>{agent.name.replace("AI ", "")}</p>
-            <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/88 leading-tight">
+            <p className={cn("text-[14px] font-semibold leading-tight", available ? "text-foreground" : "text-muted-foreground")}>{agent.name.replace("AI ", "")}</p>
+            <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88 leading-tight">
                {available ? "Available now" : "Can prepare limited brief"}
             </p>
           </div>
@@ -3569,33 +3570,33 @@ const LightMissionCards = ({
         <button
           key={mission.id}
           onClick={() => onMission(mission.id)}
-          className="group grid gap-4 rounded-[22px] border border-foreground/8 bg-background/80 p-5 text-left shadow-sm transition-all duration-300 hover:border-brand-accent/20 hover:shadow-xl hover:shadow-brand-accent/[0.03] md:grid-cols-[minmax(0,1fr)_170px]"
+          className="group grid gap-4 rounded-xl border border-foreground/10 bg-background p-4 text-left shadow-sm transition-colors duration-200 hover:border-brand-accent/20 hover:bg-foreground/[0.012] md:grid-cols-[minmax(0,1fr)_170px]"
         >
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <span className={cn("h-1.5 w-1.5 rounded-full", statusColor)} />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/85">Active Mission</span>
-              <span className="rounded-full bg-warning/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.08em] text-warning">Blocker</span>
+              <span className="text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/85">Active Mission</span>
+              <span className="rounded-md bg-warning/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-[0.04em] text-warning">Blocker</span>
             </div>
-            <p className="mt-3 font-display text-[17px] font-bold text-foreground tracking-tight group-hover:text-brand-accent transition-colors">
+            <p className="mt-3 font-display text-[16px] font-semibold text-foreground group-hover:text-brand-accent transition-colors">
               {mission.title}
             </p>
             <p className="mt-2 text-[13px] font-medium leading-relaxed text-muted-foreground/90 line-clamp-2">
               {mission.summary}
             </p>
           </div>
-          <div className="flex flex-col justify-between rounded-[16px] border border-foreground/5 bg-foreground/[0.025] p-4">
+          <div className="flex flex-col justify-between rounded-lg border border-foreground/8 bg-foreground/[0.018] p-4">
              <div>
                <div className="flex items-center justify-between gap-3">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/88">Progress</p>
-                  <p className="text-[12px] font-bold text-foreground">{mission.progress}%</p>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Progress</p>
+                  <p className="text-[12px] font-semibold text-foreground">{mission.progress}%</p>
                </div>
                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-foreground/5">
                   <div className={cn("h-full rounded-full transition-all duration-1000", statusColor)} style={{ width: `${mission.progress}%` }} />
                </div>
-               <p className="mt-3 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/88">{mission.review}</p>
+               <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">{mission.review}</p>
              </div>
-             <span className="mt-4 inline-flex items-center justify-between text-[11px] font-bold text-brand-accent">
+             <span className="mt-4 inline-flex items-center justify-between text-[11px] font-semibold text-brand-accent">
                Open mission
                <ChevronRight className="h-4 w-4 transition-all group-hover:translate-x-1" />
              </span>
@@ -3825,7 +3826,7 @@ const ManagerDeskPanel = ({
           </div>
         </aside>
 
-        {/* Right: Active question Ã¢â‚¬â€ fills the screen */}
+        {/* Right: Active question fills the screen */}
         <div className="rounded-[28px] border border-foreground/5 bg-background p-8 shadow-2xl shadow-black/[0.02]">
           <div className="max-w-2xl">
             <p className="font-ui text-[10px] font-bold uppercase tracking-[0.2em] text-brand-accent">Active Question {managerQuestions.findIndex(q => q.id === activeQuestion) + 1} / {managerQuestions.length}</p>
@@ -3858,7 +3859,7 @@ const ManagerDeskPanel = ({
       </div>
       </div>
     ) : (
-      /* UNLOCKED STATE: All questions answered Ã¢â‚¬â€ show full interface */
+      /* UNLOCKED STATE: All questions answered show full interface */
       <>
         {/* Ask the Manager */}
         <div className="surface-panel rounded-[28px] p-8 shadow-2xl shadow-black/[0.02]">
@@ -3913,7 +3914,7 @@ const ManagerDeskPanel = ({
           </div>
         </div>
 
-        {/* Recent Conversations Ã¢â‚¬â€ only visible after unlock */}
+        {/* Recent Conversations only visible after unlock */}
         <RecentConversationsPanel conversations={conversations} onContinueConversation={onContinueConversation} />
       </>
     )}
@@ -4452,10 +4453,10 @@ const TasksWorkspace = ({
 
     if (embedded) {
       return (
-        <>
+        <section className="surface-elevated rounded-[22px] p-4 shadow-sm sm:p-5">
           <h3 className="sr-only">Release tasks</h3>
           {innerContent}
-        </>
+        </section>
       );
     }
     return (
@@ -4658,7 +4659,13 @@ const CheckpointsWorkspace = ({
       </div>
     );
 
-    if (embedded) return innerContent;
+    if (embedded) {
+      return (
+        <section className="surface-elevated rounded-[22px] p-4 shadow-sm sm:p-5">
+          {innerContent}
+        </section>
+      );
+    }
     return (
       <WorkspaceShell eyebrow="Checkpoints" title="Mission checkpoints" onBack={onBack || (() => {})}>
         {innerContent}
@@ -4742,6 +4749,11 @@ const MissionsWorkspace = ({
   const activeMissions = missions.filter((m) => !m.archived);
   const archivedMissions = missions.filter((m) => m.archived);
   const missionActiveBlocker = missionCheckpoints.find((checkpoint) => checkpoint.status === "Needs revision");
+  const selectedMissionProgressColor =
+    selectedMission.status === "blocked" ? "bg-warning" :
+    selectedMission.status === "review" ? "bg-amber-500" :
+    selectedMission.status === "complete" ? "bg-success" :
+    "bg-foreground";
 
   if (missionRoomMode === "list") {
     return (
@@ -4872,8 +4884,8 @@ const MissionsWorkspace = ({
           <ArrowLeft className="h-4 w-4" />
           Back to Missions
         </button>
-        <div className="grid gap-5">
-          <div>
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-end">
+          <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <p className="font-ui text-[10px] font-bold uppercase tracking-[0.18em] text-brand-accent">What is happening</p>
               <span className={cn(
@@ -4887,9 +4899,16 @@ const MissionsWorkspace = ({
             </div>
             <h2 className="mt-3 font-display text-[30px] font-bold leading-tight tracking-tight text-foreground lg:text-[38px]">{selectedMission.title}</h2>
             <p className="mt-2 max-w-3xl text-[14px] font-semibold leading-relaxed text-muted-foreground/84">{selectedMission.summary}</p>
-            <div className="mt-4 h-1.5 max-w-xl overflow-hidden rounded-full bg-foreground/8">
-              <div className={cn("h-full rounded-full transition-all duration-1000", selectedMission.status === "blocked" ? "bg-warning" : "bg-brand-accent")} style={{ width: `${selectedMission.progress}%` }} />
+          </div>
+          <div className="rounded-lg border border-foreground/8 bg-foreground/[0.018] p-4">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">Progress</p>
+              <p className="text-[12px] font-semibold text-foreground">{selectedMission.progress}%</p>
             </div>
+            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-foreground/5">
+              <div className={cn("h-full rounded-full transition-all duration-1000", selectedMissionProgressColor)} style={{ width: `${selectedMission.progress}%` }} />
+            </div>
+            <p className="mt-3 text-[10px] font-semibold uppercase tracking-[0.04em] text-muted-foreground/88">{selectedMission.review}</p>
           </div>
         </div>
       </div>
@@ -5450,7 +5469,7 @@ const EvidenceDrawer = ({ drawer, onClose }: { drawer: DrawerKind; onClose: () =
               <div key={item.id} className="surface-panel overflow-hidden rounded-[28px] p-8 shadow-2xl shadow-black/[0.03] transition-all hover:scale-[1.01]">
                 <div className="flex flex-wrap items-start justify-between gap-6">
                   <div>
-                    <p className="font-ui text-[11px] font-bold uppercase tracking-[0.15em] text-brand-accent">{item.id} Ã‚Â· {item.source}</p>
+                    <p className="font-ui text-[11px] font-bold uppercase tracking-[0.15em] text-brand-accent">{item.id} / {item.source}</p>
                     <h4 className="font-display mt-2 text-[22px] font-bold text-foreground tracking-tight">{item.subject}.</h4>
                   </div>
                   <span className={cn(
@@ -5585,7 +5604,7 @@ const EvidenceDrawer = ({ drawer, onClose }: { drawer: DrawerKind; onClose: () =
 const InvestigationScreen = ({ onBack }: { onBack: () => void }) => (
   <WorkspaceShell eyebrow="Intelligence" title="Investigation" onBack={onBack}>
     <div className="surface-panel rounded-[24px] p-8">
-      <p className="text-[15px] font-medium text-muted-foreground/80 leading-relaxed">Investigation workspace Ã¢â‚¬â€ cross-referencing signals and market data.</p>
+      <p className="text-[15px] font-medium text-muted-foreground/80 leading-relaxed">Investigation workspace - cross-referencing signals and market data.</p>
     </div>
   </WorkspaceShell>
 );
@@ -6250,7 +6269,7 @@ const MusicDistributionHub = ({
             type="button"
             disabled={!isReady}
             onClick={handleDistribute}
-            className="w-full rounded-[16px] bg-gradient-to-r from-indigo-600 to-brand-accent py-3 text-[12px] font-bold uppercase tracking-[0.1em] text-white shadow-md disabled:opacity-40 disabled:pointer-events-none hover:opacity-95 transition-all flex items-center justify-center gap-2"
+            className="w-full rounded-lg bg-foreground py-3 text-[12px] font-semibold uppercase tracking-[0.04em] text-background disabled:opacity-40 disabled:pointer-events-none hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
           >
             <Lock className="h-4 w-4" />
             <span>Initialize Global Distribution</span>
